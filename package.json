@@ -1,0 +1,26 @@
+{
+  "name": "battle_anagram",
+  "version": "1.0.0",
+  "description": "Plateforme complète pour animer un duel d'anagrammes sur TikTok LIVE avec modes test et production.",
+  "main": "server/index.js",
+  "scripts": {
+    "start:test": "node server/index.js --mode=test",
+    "start:prod": "node server/index.js --mode=prod",
+    "lint": "echo 'no lint configured'"
+  },
+  "keywords": [
+    "tiktok",
+    "live",
+    "anagram",
+    "game"
+  ],
+  "author": "",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "tiktok-live-connector": "^1.6.11",
+    "ws": "^8.17.0"
+  }
+}

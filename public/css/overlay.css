@@ -1,0 +1,241 @@
+:root {
+  --bg-color: #0f172a;
+  --accent-color: #22d3ee;
+  --text-color: #f8fafc;
+  --font-family: 'Inter', 'Segoe UI', sans-serif;
+  --banner-speed: 30s;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background: transparent;
+}
+
+.overlay {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.overlay .background {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-color);
+  opacity: 0.85;
+  filter: blur(12px);
+  z-index: 0;
+}
+
+.overlay__header,
+.overlay__footer,
+.overlay__main {
+  position: relative;
+  z-index: 1;
+}
+
+.overlay__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2rem;
+}
+
+.header__title {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.header__champion {
+  font-size: 1.1rem;
+  text-align: right;
+  max-width: 40%;
+}
+
+.overlay__main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: 1.5rem 2rem;
+}
+
+.overlay[data-layout='portrait'] .overlay__main {
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+}
+
+.overlay[data-layout='portrait'] .player--left,
+.overlay[data-layout='portrait'] .player--right {
+  flex-direction: row;
+  align-items: center;
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  background: rgba(15, 23, 42, 0.7);
+  border: 2px solid rgba(34, 211, 238, 0.35);
+  border-radius: 18px;
+  padding: 1.5rem;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 24px 45px rgba(15, 23, 42, 0.4);
+  min-height: 18rem;
+}
+
+.player__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.player__name {
+  font-size: 1.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.player__status {
+  font-size: 1.1rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.player__status[data-status='ready'] {
+  background: rgba(34, 197, 94, 0.2);
+  border-color: rgba(34, 197, 94, 0.5);
+  color: #bbf7d0;
+}
+
+.player__status[data-status='waiting'] {
+  background: rgba(234, 179, 8, 0.15);
+  border-color: rgba(234, 179, 8, 0.4);
+  color: #facc15;
+}
+
+.player__status[data-status='missing'] {
+  background: rgba(248, 113, 113, 0.2);
+  border-color: rgba(248, 113, 113, 0.6);
+  color: #fecaca;
+}
+
+.player__timer {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.player__score {
+  margin-top: auto;
+  font-size: 1.25rem;
+  letter-spacing: 0.05em;
+}
+
+.round {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  background: rgba(15, 23, 42, 0.6);
+  border: 2px solid rgba(34, 211, 238, 0.35);
+  border-radius: 18px;
+  padding: 2rem;
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+
+.round__timer {
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.round__letters {
+  font-size: 3rem;
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+}
+
+.round__queue {
+  font-size: 1rem;
+  opacity: 0.85;
+}
+
+.round__queue span {
+  display: inline-block;
+  background: rgba(34, 211, 238, 0.12);
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  margin: 0 0.3rem;
+}
+
+.overlay__footer {
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 999px;
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  background: rgba(15, 23, 42, 0.65);
+  min-height: 3rem;
+}
+
+.banner__content {
+  position: absolute;
+  white-space: nowrap;
+  will-change: transform;
+  animation: scroll var(--banner-speed) linear infinite;
+  padding: 0 100%;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.stats {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.overlay[data-layout='portrait'] .overlay__header,
+.overlay[data-layout='portrait'] .overlay__footer {
+  padding: 1rem;
+}
+
+.overlay[data-layout='portrait'] .overlay__main {
+  padding: 1rem;
+  gap: 1rem;
+}

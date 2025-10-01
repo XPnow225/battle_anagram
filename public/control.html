@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Battle Anagram Console</title>
+    <link rel="stylesheet" href="css/control.css" />
+  </head>
+  <body>
+    <div class="console" id="console">
+      <header class="console__header">
+        <h1>Battle Anagram · Console</h1>
+        <div class="status" id="connection-status">Déconnecté</div>
+      </header>
+      <section class="section">
+        <h2>État de la partie</h2>
+        <div class="grid grid--players" id="players"></div>
+        <div class="grid grid--queue">
+          <div>
+            <h3>File d'attente</h3>
+            <ul id="queue-list" class="list"></ul>
+          </div>
+          <div>
+            <h3>Bannière</h3>
+            <label>Texte
+              <input type="text" id="banner-text" placeholder="Entrez un message" />
+            </label>
+            <label>Vitesse (s)
+              <input type="number" id="banner-speed" min="10" max="120" step="5" value="30" />
+            </label>
+            <button id="banner-apply">Mettre à jour</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Paramètres visuels</h2>
+        <div class="grid grid--settings">
+          <label>Couleur de fond<input type="color" id="theme-background" value="#0f172a" /></label>
+          <label>Couleur accent<input type="color" id="theme-accent" value="#22d3ee" /></label>
+          <label>Couleur du texte<input type="color" id="theme-text" value="#f8fafc" /></label>
+          <label>Police personnalisée
+            <input type="text" id="theme-font" placeholder="Inter, Segoe UI, sans-serif" />
+          </label>
+          <label>Format
+            <select id="layout-select">
+              <option value="16:9">16:9 (paysage)</option>
+              <option value="9:16">9:16 (portrait)</option>
+            </select>
+          </label>
+        </div>
+        <button id="theme-apply">Appliquer</button>
+      </section>
+
+      <section class="section">
+        <h2>Paramètres du jeu</h2>
+        <div class="grid grid--settings">
+          <label>Durée manche (sec)
+            <input type="number" id="duration" min="60" max="600" step="10" value="120" />
+          </label>
+          <label>Bonus victoire (sec)
+            <input type="number" id="bonus" min="10" max="120" step="5" value="30" />
+          </label>
+          <label>Malus adversaire (sec)
+            <input type="number" id="penalty" min="10" max="120" step="5" value="20" />
+          </label>
+        </div>
+        <button id="timers-apply">Mettre à jour les timers</button>
+      </section>
+
+      <section class="section">
+        <h2>Gestion des mots</h2>
+        <div class="words">
+          <input type="file" id="words-file" accept=".txt" />
+          <textarea id="words-manual" rows="6" placeholder="Collez ou saisissez des mots, un par ligne"></textarea>
+          <div class="words__actions">
+            <button id="words-upload">Importer</button>
+            <span id="words-count">0 mots chargés</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="test-tools">
+        <h2>Mode test · simulateur</h2>
+        <div class="grid grid--test">
+          <div>
+            <h3>Simuler un message</h3>
+            <input type="text" id="test-username" placeholder="pseudo" />
+            <input type="text" id="test-display" placeholder="Nom à afficher" />
+            <input type="text" id="test-message" placeholder="Message (ex: +join, mot)" />
+            <button id="test-send">Envoyer</button>
+          </div>
+          <div>
+            <h3>Simuler un cadeau</h3>
+            <input type="text" id="gift-username" placeholder="pseudo" />
+            <input type="text" id="gift-display" placeholder="Nom à afficher" />
+            <input type="text" id="gift-name" placeholder="Nom du cadeau" />
+            <input type="number" id="gift-value" placeholder="Diamants" />
+            <button id="gift-send">Envoyer</button>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script type="module" src="js/control.js"></script>
+  </body>
+</html>

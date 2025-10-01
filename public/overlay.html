@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Battle Anagram Overlay</title>
+    <link rel="stylesheet" href="css/overlay.css" />
+  </head>
+  <body>
+    <div id="overlay" class="overlay" data-layout="landscape">
+      <div class="background"></div>
+      <header class="overlay__header">
+        <div class="header__title">Battle Anagram LIVE</div>
+        <div class="header__champion" id="champion"></div>
+      </header>
+      <main class="overlay__main">
+        <section class="player player--left" id="player-left">
+          <div class="player__header">
+            <div class="player__name" data-label="Joueur 1">Joueur 1</div>
+            <div class="player__status" data-status="waiting">En attente</div>
+          </div>
+          <div class="player__timer" data-time="120">120s</div>
+          <div class="player__score">Score: <span>0</span></div>
+        </section>
+        <section class="round">
+          <div class="round__timer" id="round-timer">--:--</div>
+          <div class="round__letters" id="letters">---</div>
+          <div class="round__queue" id="queue"></div>
+        </section>
+        <section class="player player--right" id="player-right">
+          <div class="player__header">
+            <div class="player__name" data-label="Joueur 2">Joueur 2</div>
+            <div class="player__status" data-status="waiting">En attente</div>
+          </div>
+          <div class="player__timer" data-time="120">120s</div>
+          <div class="player__score">Score: <span>0</span></div>
+        </section>
+      </main>
+      <footer class="overlay__footer">
+        <div class="banner" id="banner">
+          <div class="banner__content" id="banner-content"></div>
+        </div>
+        <div class="stats" id="stats"></div>
+      </footer>
+    </div>
+    <script type="module" src="js/overlay.js"></script>
+  </body>
+</html>
